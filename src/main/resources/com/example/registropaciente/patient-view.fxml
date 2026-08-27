@@ -1,78 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER"
-      maxHeight="-Infinity"
-      maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="450.0"
-      prefWidth="379.0"
-      spacing="10.0"
-      style="-fx-alignment: CENTER; -fx-background-color: LIGHTBLUE;"
+<VBox spacing="10"
+      prefHeight="600"
+      prefWidth="850"
+      style="-fx-background-color: LIGHTBLUE;"
       xmlns="http://javafx.com/javafx/26"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.registropaciente.controladores.PatientController">
 
-   <children>
-
-      <Label text="Nombres"/>
-      <TextField fx:id="txtNombres"
-                 promptText="Andrea Sofía"/>
-
-      <Label text="Apellidos"/>
-      <TextField fx:id="txtApellidos"
-                 promptText="de la Roca Delgado"/>
-
-      <Label text="Correo electrónico"/>
-      <TextField fx:id="txtEmail"
-                 promptText="asodelaroca@uamv.edu.ni"/>
-
-      <Label text="Dirección"/>
-      <TextField fx:id="txtDireccion"
-                 promptText="Managua"/>
-
-      <Label text="Fecha de Nacimiento"/>
-      <DatePicker fx:id="dpFechaNac"
-                  promptText="Selecciona tu fecha de nacimiento"/>
-
-      <Label text="Sexo"/>
-
-      <RadioButton fx:id="rbMasculino"
-                   text="Masculino">
-         <toggleGroup>
-            <ToggleGroup fx:id="grupoSexo"/>
-         </toggleGroup>
-      </RadioButton>
-
-      <RadioButton fx:id="rbFemenino"
-                   text="Femenino"
-                   toggleGroup="$grupoSexo"/>
-
-      <CheckBox fx:id="cbTerminosServicios"
-                text="Acepto los términos y servicios"/>
-
-      <Button fx:id="btnRegistrar"
-              mnemonicParsing="false"
-              onAction="#agregarOnClick"
-              text="Registrar"/>
-
-      <Label fx:id="lblContador"
-             text="Registros: 0"/>
-
-   </children>
-
    <padding>
-      <Insets topRightBottomLeft="30"/>
+      <Insets topRightBottomLeft="20"/>
    </padding>
+
+   <Label text="Registro de Pacientes"
+          style="-fx-font-size: 20px;"/>
+
+   <HBox spacing="20">
+
+      <!-- FORMULARIO -->
+
+      <VBox spacing="7"
+            prefWidth="280">
+
+         <Label text="Nombres"/>
+         <TextField fx:id="txtNombres"/>
+
+         <Label text="Apellidos"/>
+         <TextField fx:id="txtApellidos"/>
+
+         <Label text="Correo"/>
+         <TextField fx:id="txtEmail"/>
+
+         <Label text="Dirección"/>
+         <TextField fx:id="txtDireccion"/>
+
+         <Label text="Fecha de nacimiento"/>
+
+         <DatePicker fx:id="dpFechaNac"/>
+
+         <Label text="Sexo"/>
+
+         <RadioButton fx:id="rbMasculino"
+                      text="Masculino">
+
+            <toggleGroup>
+               <ToggleGroup fx:id="grupoSexo"/>
+            </toggleGroup>
+
+         </RadioButton>
+
+         <RadioButton fx:id="rbFemenino"
+                      text="Femenino"
+                      toggleGroup="$grupoSexo"/>
+
+         <CheckBox fx:id="cbTerminosServicios"
+                   text="Acepto los términos"/>
+
+         <Button fx:id="btnRegistrar"
+                 text="Registrar"
+                 onAction="#agregarOnClick"/>
+
+         <Label fx:id="lblContador"
+                text="Registros: 0"/>
+
+      </VBox>
+
+      <!-- TABLA -->
+
+      <VBox spacing="7">
+
+         <Label text="Pacientes registrados"/>
+
+         <TableView fx:id="tablaPacientes"
+                    prefWidth="500"
+                    prefHeight="450">
+
+            <columns>
+
+               <TableColumn fx:id="colNombres"
+                            text="Nombres"
+                            prefWidth="100"/>
+
+               <TableColumn fx:id="colApellidos"
+                            text="Apellidos"
+                            prefWidth="110"/>
+
+               <TableColumn fx:id="colEmail"
+                            text="Correo"
+                            prefWidth="130"/>
+
+               <TableColumn fx:id="colSexo"
+                            text="Sexo"
+                            prefWidth="70"/>
+
+               <TableColumn fx:id="colFecha"
+                            text="Nacimiento"
+                            prefWidth="90"/>
+
+            </columns>
+
+         </TableView>
+
+      </VBox>
+
+   </HBox>
 
 </VBox>
