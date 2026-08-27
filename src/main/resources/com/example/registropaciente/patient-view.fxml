@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="TOP_CENTER"
@@ -14,7 +15,7 @@
       maxWidth="-Infinity"
       minHeight="-Infinity"
       minWidth="-Infinity"
-      prefHeight="400.0"
+      prefHeight="450.0"
       prefWidth="379.0"
       spacing="10.0"
       style="-fx-alignment: CENTER; -fx-background-color: LIGHTBLUE;"
@@ -45,8 +46,17 @@
                   promptText="Selecciona tu fecha de nacimiento"/>
 
       <Label text="Sexo"/>
-      <RadioButton fx:id="rbSexo"
-                   text="Masculino"/>
+
+      <RadioButton fx:id="rbMasculino"
+                   text="Masculino">
+         <toggleGroup>
+            <ToggleGroup fx:id="grupoSexo"/>
+         </toggleGroup>
+      </RadioButton>
+
+      <RadioButton fx:id="rbFemenino"
+                   text="Femenino"
+                   toggleGroup="$grupoSexo"/>
 
       <CheckBox fx:id="cbTerminosServicios"
                 text="Acepto los términos y servicios"/>
